@@ -30,6 +30,7 @@ Step 6- Migrate and create admin/superuser
 
 Step 8- Make migration and add table data to file
  * ./manage.py makemigrations app will create a new file in the migrations directory
+  - This is a schema migration
  * Do not edit 0001, create a 0002 and edit that
    Def add_data(appname, schema_editor)
    Class.objects.create(variablekeyword="desiredinput")
