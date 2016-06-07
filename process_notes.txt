@@ -1,0 +1,39 @@
+
+Step 1- Create the directory that will store the project as well as a direnv for it.
+ * mkdir folder_name
+ * echo "layout python3"> .envrc
+
+Step 2- Load django into directory
+ * django-admin startproject projectname
+
+Step 3- Run server while in project directory containing manage.py
+ * ./manage.py runserver
+ * Copy and paste link in browser to access site
+
+Step 5- Create app
+ * ./manage.py startapp appname
+
+
+Step 6- Migrate and create admin/superuser
+ * ./manage.py migrate
+ * ./manage.py createsuperuser
+ * username = asdf
+ * password = safepass
+
+ Step 7- Create apps models and install app
+ * create a class in the models.py file
+    variable = models.VariableType(max_datalength)
+    in settings.py, INSTALLED_APPS ['appname']
+ * in admin.py within the app directory:
+    from appname.models import ClassName
+    admin.site.register(Class)
+
+Step 8- Make migration and add table data to file
+ * ./manage.py makemigrations app will create a new file in the migrations directory
+ * Do not edit 0001, create a 0002 and edit that
+   Def add_data(appname, schema_editor)
+   Class.objects.create(variablekeyword="desiredinput")
+ * run ./manage.py migrate to apply changes and make appear in database
+
+
+
