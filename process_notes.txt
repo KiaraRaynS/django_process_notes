@@ -33,10 +33,7 @@ Step 5- Create apps models and make migrations
     from appname.models import ClassName
     admin.site.register(Class)
 
-Step 6- Make migration and add table data to file
- * ./manage.py makemigrations app will create a new file in the migrations directory
-  - This is both a schema migration and safe command
-
+Step 6- Migrate to create tables within database
  * run ./manage.py migrate to update the database
   - If no migrations to apply is returned then the database is up to date and no changes have been applied
 
