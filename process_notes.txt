@@ -1,54 +1,49 @@
 
 Step 1- Create the directory that will store the project as well as a direnv for it.
  * mkdir folder_name
- * echo "layout python3"> .envrc
+ * Go into the folder you just created and type:
+   - echo "layout python3"> .envrc
 
-Step 2- Install and load django into directory
+Step 2- Install and load django into directory, start project.
+ * pip install django
  * django-admin startproject projectname
 
-Step 3- Run server while in project directory containing manage.py
- * ./manage.py runserver
- * Copy and paste link in browser to access site
 
-Step 5- Create app and add it to settings.py
+Step 3- Create app and add it to settings.py
+ * Enter the folder created by running startproject
  * ./manage.py startapp appname
- * in settings.py(in app directory) add the app to INSTALLED_APPS
+ * in settings.py(in projectname directory) add the app to INSTALLED_APPS
    - ['appname']
 
-Step 6- Migrate and create admin/superuser
+
+Step 4- Migrate and create admin/superuser
  * ./manage.py migrate
  * ./manage.py createsuperuser
- * username = asdf
- * password = safepass
 
- Step 7- Create apps models and install app
+
+Step 5- Create apps models and make migrations
  * create a class in the models.py file
     class syntax: class Name(models.Model)
     variable syntax:  models.VariableType(max_datalength)
-     -(null=True) will auto input default value *DO NOT DO THIS for fields that require input
      list of field types -> https://docs.djangoproject.com/en/1.9/ref/models/fields/
      - When naming Class/Model use a singular term [ex. dont use stats or oxens]
+ * return to the directory with ./manage.py and run ./manage.py makemigrations
 
  * in admin.py within the app directory:
     from appname.models import ClassName
     admin.site.register(Class)
 
-Step 8- Make migration and add table data to file
+Step 6- Make migration and add table data to file
  * ./manage.py makemigrations app will create a new file in the migrations directory
   - This is both a schema migration and safe command
 
  * run ./manage.py migrate to update the database
   - If no migrations to apply is returned then the database is up to date and no changes have been applied
 
- * Do not edit 0001, create a 0002 and edit that
-   Def name_of_function(apps, schema_editor)
-   Stat = apps.getmodel("app_name", "Stat")
-   Class.objects.create(variablekeyword="desiredinput")
 
- * In operations=[] add:
-    'migrations.runPython(name_of_function)'
- * run ./manage.py migrate to apply changes and make appear in database
+To Run server:
+ * in project directory containing manage.py
+   - ./manage.py runserver
+ * ctrl + c will end server
+ * Copy and paste link in browser to access site
 
-Error notes:
-    You are trying to add a non-nullable field to start without default: No data given to class attribute, hitting enter will allow
-     default to be used.
